@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'myaccount'
+
+LOGOUT_REDIRECT_URL = 'frontpage'
+
 CSRF_TRUSTED_ORIGINS = [
     'https://*.gitpod.io', 
     'https://localhost', 
