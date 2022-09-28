@@ -7,6 +7,14 @@ My Store
 {% block content %}
     <h1 class="text-2xl">My Store</h1>
 
+    {% if messages %}
+        {% for message in messages %}
+        <div class="mt-8 px-8 py-4 bg-teal-200 text-teal-800">
+            {{ message }}
+        </div>
+
+        {% endfor%}
+    {% endif %}
     <a href="{% url 'add_product' %}" class="inline-block mt-6  py-4 px-8 bg-teal-500 text-white">Add Product</a>
     <h2 class="text-xl mt-6">My Products</h2>
 

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -34,6 +35,8 @@ def add_product(request):
             product.slug = slugify(title)
             product.save()
 
+            messages.success(request, 'The Property was added')
+
             return redirect('my_store')
 
     else:       
@@ -50,6 +53,12 @@ def edit_product(request, pk):
     
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, 'Property Updated')
+
+            return redirect('my_store')
     else:
         form = ProductForm(instance=product)
     
