@@ -1,4 +1,4 @@
-
+from statistics import mode
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -7,11 +7,10 @@ class Category(models.Model):
     slug = models.SlugField(max_length=50)
 
     class Meta:
-        verbose_name_plural = "Categories"
-
+        verbose_name_plural = 'Categories'
+    
     def __str__(self):
         return self.title
-
 
 class Product(models.Model):
     DRAFT = 'draft'
@@ -19,9 +18,9 @@ class Product(models.Model):
     ACTIVE = 'active'
     DELETED = 'deleted'
 
-    STATUS_CHOICES= (
-        (DRAFT, 'draft'),
-        (WAITING_APPROVAL, 'Waiting Approval'),
+    STATUS_CHOICES = (
+        (DRAFT, 'Draft'),
+        (WAITING_APPROVAL, 'Waiting approval'),
         (ACTIVE, 'Active'),
         (DELETED, 'Deleted'),
     )
@@ -36,12 +35,11 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default=ACTIVE)
-
-    class Meta: 
-        ordering =('-created_at',)
+    class Meta:
+        ordering = ('-created_at',)
     
     def __str__(self):
         return self.title
-
+    
     def get_display_price(self):
-        return self.price 
+        return self.price / 100
