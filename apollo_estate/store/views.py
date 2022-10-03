@@ -9,8 +9,21 @@ def add_to_cart(request, product_id):
     cart = Cart(request)
     cart.add(product_id)
 
-    return redirect('frontpage')
+    return redirect('cart_view')
 
+def remove_from_cart(request, product_id):
+    cart= Cart(request)
+    car.remove(product_id)
+
+    return redirect('cart_view')
+
+def cart_view(request):
+    cart = Cart(request)
+
+    return render(request, 'store/cart_view.html', {
+        'cart' : cart
+    })
+    
 
 def search(request):
     query = request.GET.get('query', '')
@@ -25,7 +38,7 @@ def category_detail(request, slug):
     category = get_object_or_404(Category, slug=slug)
     products = category.products.filter(status=Product.ACTIVE)
 
-    return render(request, 'store/category_detail.html', {
+    return render(request, 'store/category_detail.html', {  
         'category': category,
         'products': products
     })
