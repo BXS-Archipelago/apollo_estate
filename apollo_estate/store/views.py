@@ -30,7 +30,7 @@ def category_detail(request, slug):
         'products': products
     })
 
-def product_detail(request, category_slug, slug):
+def product_detail(request, category_slug, slug):    
     product = get_object_or_404(Product, slug=slug, status=Product.ACTIVE)
 
     return render(request, 'store/product_detail.html', {
