@@ -67,6 +67,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'apollo_estate.urls'
 
+WEBSITE_URL = 'https://8000-bxsarchipel-apolloestat-vrr20wfqajx.ws-eu70.gitpod.io/'
+
+STRIPE_PUB_KEY = 'pk_test_51J7ycGG7TwB0JNQzuQuCr0dhot9q2wTtzX1tMVcT61If1IulQWC4vJp1zd8bxalcS9iIelaI1klt1jXj4IUD1cQN00cQu3JnXS'
+
+STRIPE_SECRET_KEY = 'sk_test_51J7ycGG7TwB0JNQz6tYTY5FMMY81BtKVNtnA3O1IgU7hRlNqnUbKrknhmt7n8SXcZMSy2bhSNhwrrdmpbcoU2By5003RiDgVhV'
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
